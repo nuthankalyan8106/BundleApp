@@ -1,5 +1,5 @@
 // ─────────────────────────────────────
-//  BundleHub — AI Bundle Builder
+//  BundleBasket — AI Bundle Builder
 //  Calls Claude API to generate bundles
 // ─────────────────────────────────────
 
@@ -18,7 +18,7 @@ async function generateBundle() {
       <p style="color:var(--text-muted);font-size:0.9rem;">AI is building your personalized bundle…</p>
     </div>`;
 
-  const prompt = `You are BundleHub's AI bundle assistant. A user described their goal: "${input}"
+  const prompt = `You are BundleBasket's AI bundle assistant. A user described their goal: "${input}"
 
 Respond with ONLY a valid JSON object — no markdown, no explanation, no backticks. Use this exact format:
 {

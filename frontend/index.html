@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BundleHub – Goal-Based Shopping</title>
+  <title>BundleBasket – Goal-Based Shopping</title>
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/auth.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -22,13 +22,30 @@
     </div>
   </div>
 
+  <header class="landing-header">
+    <div class="landing-brand" onclick="scrollToTop()">
+      <div class="logo-icon">🎯</div>
+      <div>
+        <strong>BundleBasket</strong>
+        <span>Goal-based shopping</span>
+      </div>
+    </div>
+    <div class="landing-header-actions">
+      <a href="#landing-features">Why BundleBasket</a>
+      <a href="#landing-faq">FAQ</a>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="btn btn-ghost" onclick="openAuth('login')">Login</button>
+      <button class="btn btn-primary" onclick="openAuth('signup')">Sign up</button>
+    </div>
+  </header>
+
   <!-- ── LANDING PAGE ── -->
   <div class="landing-page" id="landing-page">
     <section class="landing-hero">
       <div class="landing-hero-copy">
         <div class="landing-pill">Goal-based shopping platform</div>
         <h1>Transform shopping intent into complete, curated bundles.</h1>
-        <p>BundleHub turns life moments into ready-to-buy experiences. Instead of searching for items one by one, start with a goal and get a complete bundle built around it.</p>
+        <p>BundleBasket turns life moments into ready-to-buy experiences. Instead of searching for items one by one, start with a goal and get a complete bundle built around it.</p>
         <div class="landing-actions">
           <button class="btn btn-primary" onclick="openAuth('signup')">Create account</button>
           <button class="btn btn-ghost" onclick="openAuth('login')">Sign in</button>
@@ -41,11 +58,11 @@
         <div class="landing-contact-row">
           <div>
             <span>Contact us</span>
-            <strong>support@bundlehub.shop</strong>
+            <strong>support@bundlebasket.shop</strong>
           </div>
           <div>
             <span>Email sales</span>
-            <strong>hello@bundlehub.shop</strong>
+            <strong>hello@bundlebasket.shop</strong>
           </div>
         </div>
       </div>
@@ -87,9 +104,9 @@
       </div>
     </section>
 
-    <section class="landing-section">
+    <section class="landing-section" id="landing-features">
       <div class="landing-section-heading">
-        <span>Why choose BundleHub</span>
+        <span>Why choose BundleBasket</span>
         <h2>Everything you need is organized around outcomes, not categories.</h2>
       </div>
       <div class="landing-feature-grid">
@@ -101,7 +118,7 @@
         <article class="landing-feature-card">
           <div class="landing-feature-icon">✦</div>
           <h3>AI bundle builder</h3>
-          <p>Describe your situation, budget, and style. BundleHub assembles a practical list instantly.</p>
+          <p>Describe your situation, budget, and style. BundleBasket assembles a practical list instantly.</p>
         </article>
         <article class="landing-feature-card">
           <div class="landing-feature-icon">👑</div>
@@ -161,12 +178,12 @@
       <div class="landing-contact-grid">
         <div class="landing-contact-card">
           <label>Email support</label>
-          <strong>support@bundlehub.shop</strong>
+          <strong>support@bundlebasket.shop</strong>
           <p>For login issues, account questions, and general support.</p>
         </div>
         <div class="landing-contact-card">
           <label>Business / creators</label>
-          <strong>partners@bundlehub.shop</strong>
+          <strong>partners@bundlebasket.shop</strong>
           <p>For brand collaborations, creator bundles, and marketplace partnerships.</p>
         </div>
         <div class="landing-contact-card">
@@ -198,19 +215,19 @@
       </div>
     </section>
 
-    <section class="landing-section landing-faq-section">
+    <section class="landing-section landing-faq-section" id="landing-faq">
       <div class="landing-section-heading">
         <span>FAQ</span>
         <h2>Quick answers before you get started.</h2>
       </div>
       <div class="landing-faq-grid">
         <details class="landing-faq-item" open>
-          <summary>What is BundleHub?</summary>
+          <summary>What is BundleBasket?</summary>
           <p>A goal-based shopping platform that bundles products around life events, needs, and experiences.</p>
         </details>
         <details class="landing-faq-item">
           <summary>How does the AI builder work?</summary>
-          <p>You describe your situation, budget, and preferences. BundleHub suggests a complete bundle you can customize.</p>
+          <p>You describe your situation, budget, and preferences. BundleBasket suggests a complete bundle you can customize.</p>
         </details>
         <details class="landing-faq-item">
           <summary>Can I edit bundles?</summary>
@@ -226,7 +243,7 @@
     <section class="landing-final-cta">
       <div>
         <span>Ready to get started?</span>
-        <h2>Join BundleHub and build your first goal-based bundle.</h2>
+        <h2>Join BundleBasket and build your first goal-based bundle.</h2>
       </div>
       <div class="landing-actions">
         <button class="btn btn-primary" onclick="openAuth('signup')">Create account</button>
@@ -239,7 +256,7 @@
   <div class="auth-overlay" id="auth-overlay">
     <div class="auth-modal">
       <button class="auth-close" onclick="closeAuth()">✕</button>
-      <div class="auth-logo"><div class="auth-logo-icon">🎯</div> BundleHub</div>
+      <div class="auth-logo"><div class="auth-logo-icon">🎯</div> BundleBasket</div>
 
       <div class="auth-tabs">
         <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign in</button>
@@ -301,7 +318,7 @@
   <nav>
     <div class="logo" onclick="showPage('home')">
       <div class="logo-icon">🎯</div>
-      BundleHub
+      BundleBasket
     </div>
     <ul class="nav-links">
       <li><a onclick="showPage('home')" id="nav-home" class="active">Explore</a></li>
@@ -489,7 +506,23 @@
 
   <!-- ── SCRIPTS ── -->
   <script>
-    window.BUNDLEHUB_API_BASE = window.BUNDLEHUB_API_BASE || 'http://localhost:3000';
+    window.BUNDLEBASKET_API_BASE = window.BUNDLEBASKET_API_BASE || 'http://localhost:3000';
+  </script>
+  <script>
+    (function () {
+      const theme = localStorage.getItem('bh_theme') || 'light';
+      document.documentElement.dataset.theme = theme;
+      window.updateThemeButton = function () {
+        const btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        const current = document.documentElement.dataset.theme || 'light';
+        btn.textContent = current === 'dark' ? '☀' : '🌙';
+      };
+      window.scrollToTop = function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+      window.updateThemeButton();
+    })();
   </script>
   <script src="js/data.js"></script>
   <script src="js/auth.js"></script>

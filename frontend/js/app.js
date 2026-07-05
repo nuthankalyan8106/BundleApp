@@ -1,5 +1,5 @@
 // ─────────────────────────────────────
-//  BundleHub — App Core
+//  BundleBasket — App Core
 //  Pages, bundle rendering, cart
 // ─────────────────────────────────────
 

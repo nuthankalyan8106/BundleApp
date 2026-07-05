@@ -1,8 +1,8 @@
 {
-  "name": "bundlehub",
+  "name": "bundlebasket",
   "version": "1.0.0",
   "private": true,
-  "description": "BundleHub goal-based shopping platform",
+  "description": "BundleBasket goal-based shopping platform",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

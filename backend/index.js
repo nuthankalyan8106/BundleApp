@@ -8,8 +8,8 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bundlehub';
-const jwtSecret = process.env.JWT_SECRET || 'bundlehub-dev-secret';
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bundlebasket';
+const jwtSecret = process.env.JWT_SECRET || 'bundlebasket-dev-secret';
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
@@ -177,5 +177,5 @@ mongoose
   });
 
 app.listen(port, () => {
-  console.log(`BundleHub running at http://localhost:${port}`);
+  console.log(`BundleBasket running at http://localhost:${port}`);
 });

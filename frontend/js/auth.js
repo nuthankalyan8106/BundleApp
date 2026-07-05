@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────
-//  BundleHub Authentication
+//  BundleBasket Authentication
 //  Uses the API first, with localStorage fallback
 //  for offline prototype mode.
 // ─────────────────────────────────────────────
 
-const API_BASE = window.BUNDLEHUB_API_BASE || 'http://localhost:3000';
+const API_BASE = window.BUNDLEBASKET_API_BASE || 'http://localhost:3000';
 
 // ── Simple hash (obfuscation, not cryptographic) ──
 function simpleHash(str) {
@@ -129,7 +129,7 @@ async function signUpEmail() {
 
     const session = response.user;
     saveSession(session);
-    showAuthSuccess('Account created! Welcome to BundleHub 🎉');
+    showAuthSuccess('Account created! Welcome to BundleBasket 🎉');
     closeAuth();
     onLogin(session);
   } catch (error) {
@@ -289,6 +289,18 @@ function showApp(isAuthed = true) {
   appShell.classList.toggle('hidden', !isAuthed);
 }
 
+function applyTheme(theme) {
+  const nextTheme = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.dataset.theme = nextTheme;
+  localStorage.setItem('bh_theme', nextTheme);
+  window.updateThemeButton?.();
+}
+
+function toggleTheme() {
+  const current = document.documentElement.dataset.theme || 'light';
+  applyTheme(current === 'light' ? 'dark' : 'light');
+}
+
 // ── Auth state: logged IN ──
 function onLogin(user) {
   window.currentUser = user;
@@ -378,4 +390,5 @@ document.addEventListener('click', e => {
 
 document.addEventListener('DOMContentLoaded', () => {
   restoreSession();
+  applyTheme(localStorage.getItem('bh_theme') || 'light');
 });

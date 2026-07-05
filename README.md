@@ -1,4 +1,4 @@
-# 🎯 BundleHub
+# 🎯 BundleBasket
 ### The World's First Goal-Based Shopping Platform
 
 ---
@@ -6,7 +6,7 @@
 ## 📁 Project Structure
 
 ```
-bundlehub/
+bundlebasket/
 │
 ├── frontend/
 │   ├── index.html          ← Main app (all pages live here)
@@ -69,7 +69,7 @@ If you want to keep using the static prototype, you can still open `frontend/ind
 
 1. Start MongoDB locally or connect to your remote cluster.
 2. Open MongoDB Compass and connect using the same URI you put in `.env`.
-3. Make sure the database name in `MONGODB_URI` is `bundlehub` or update both values together.
+3. Make sure the database name in `MONGODB_URI` is `bundlebasket` or update both values together.
 4. Run `npm start` and sign up from the app. New users will appear in the `users` collection.
 
 The backend reads `MONGODB_URI` and `JWT_SECRET` from `backend/.env`. A ready-to-edit template is in [backend/.env.example](backend/.env.example).
@@ -81,7 +81,7 @@ The backend reads `MONGODB_URI` and `JWT_SECRET` from `backend/.env`. A ready-to
 ### Netlify (Easiest — free)
 1. Go to https://netlify.com → sign up free
 2. Drag the `frontend/` folder onto the deploy area for the static site
-3. Get a live URL instantly (e.g. `bundlehub.netlify.app`)
+3. Get a live URL instantly (e.g. `bundlebasket.netlify.app`)
 4. Deploy `backend/` separately if you want the API live too
 5. Buy your domain → Settings → Domain management → Add custom domain
 
@@ -111,4 +111,4 @@ vercel
 
 ---
 
-Built with ❤️ — BundleHub © 2025
+Built with ❤️ — BundleBasket © 2025
