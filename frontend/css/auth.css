@@ -49,22 +49,26 @@
 .auth-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 1.5rem;
 }
 .auth-logo-icon {
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 0.9rem;
+  overflow: hidden;
+  background: transparent;
+}
+.auth-logo-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ── TABS ── */
@@ -108,8 +112,37 @@
   transition: border-color 0.2s;
   background: var(--surface);
 }
+.auth-input.password-input {
+  padding-right: 44px;
+}
 .auth-input:focus { border-color: var(--accent); }
 .auth-input::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+.auth-input-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  min-width: 62px;
+}
+
+.password-toggle:hover {
+  background: var(--surface);
+  color: var(--text);
+  border-color: rgba(59,130,246,0.26);
+}
 
 .auth-btn {
   padding: 13px;

@@ -107,6 +107,15 @@ function closeAuth() {
   document.getElementById('auth-overlay').classList.remove('open');
 }
 
+function togglePasswordVisibility(inputId, button) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const isPassword = input.type === 'password';
+  input.type = isPassword ? 'text' : 'password';
+  button.textContent = isPassword ? 'Hide' : 'Show';
+  button.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+}
+
 // Close on backdrop click
 document.getElementById('auth-overlay').addEventListener('click', e => {
   if (e.target === document.getElementById('auth-overlay')) closeAuth();

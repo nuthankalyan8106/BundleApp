@@ -24,7 +24,9 @@
 
   <header class="landing-header" id="landing-header">
     <div class="landing-brand" onclick="scrollToTop()">
-      <div class="logo-icon">🎯</div>
+      <div class="logo-icon logo-icon-svg">
+        <img src="logo.svg" alt="BundleBasket logo" width="42" height="42" />
+      </div>
       <div>
         <strong>BundleBasket</strong>
         <span>Goal-based shopping</span>
@@ -46,10 +48,6 @@
         <div class="landing-pill">Goal-based shopping platform</div>
         <h1>Transform shopping intent into complete, curated bundles.</h1>
         <p>BundleBasket turns life moments into ready-to-buy experiences. Instead of searching for items one by one, start with a goal and get a complete bundle built around it.</p>
-        <div class="landing-actions">
-          <button class="btn btn-primary" onclick="openAuth('signup')">Create account</button>
-          <button class="btn btn-ghost" onclick="openAuth('login')">Sign in</button>
-        </div>
         <div class="landing-metrics">
           <div><strong>50+</strong><span>goal bundles</span></div>
           <div><strong>AI</strong><span>bundle builder</span></div>
@@ -81,12 +79,26 @@
             <div class="landing-score">92% match</div>
           </div>
           <div class="landing-dashboard-chart">
-            <div class="landing-bar high"></div>
-            <div class="landing-bar medium"></div>
-            <div class="landing-bar high"></div>
-            <div class="landing-bar low"></div>
-            <div class="landing-bar medium"></div>
-            <div class="landing-bar high"></div>
+            <div class="landing-chart-row">
+              <span class="landing-chart-label">Essentials</span>
+              <div class="landing-chart-track"><div class="landing-chart-fill" style="width:92%"></div></div>
+              <span class="landing-chart-value">92%</span>
+            </div>
+            <div class="landing-chart-row">
+              <span class="landing-chart-label">Style fit</span>
+              <div class="landing-chart-track"><div class="landing-chart-fill" style="width:88%"></div></div>
+              <span class="landing-chart-value">88%</span>
+            </div>
+            <div class="landing-chart-row">
+              <span class="landing-chart-label">Budget</span>
+              <div class="landing-chart-track"><div class="landing-chart-fill" style="width:95%"></div></div>
+              <span class="landing-chart-value">95%</span>
+            </div>
+            <div class="landing-chart-row">
+              <span class="landing-chart-label">Delivery</span>
+              <div class="landing-chart-track"><div class="landing-chart-fill" style="width:78%"></div></div>
+              <span class="landing-chart-value">78%</span>
+            </div>
           </div>
           <div class="landing-dashboard-grid">
             <div><span>Bundle value</span><strong>₹5,799</strong></div>
@@ -140,18 +152,22 @@
       </div>
       <div class="landing-trust-grid">
         <div class="landing-trust-card">
+          <div class="landing-trust-icon">🎓</div>
           <strong>Students</strong>
           <p>Hostel, campus, and first-job readiness bundles.</p>
         </div>
         <div class="landing-trust-card">
+          <div class="landing-trust-icon">🏠</div>
           <strong>Families</strong>
           <p>Home setup, baby care, gifts, and seasonal bundles.</p>
         </div>
         <div class="landing-trust-card">
+          <div class="landing-trust-icon">👑</div>
           <strong>Creators</strong>
           <p>Curated recommendations from people who know the category.</p>
         </div>
         <div class="landing-trust-card">
+          <div class="landing-trust-icon">🏷</div>
           <strong>Brands</strong>
           <p>Better product grouping, clearer demand, and stronger conversion.</p>
         </div>
@@ -164,9 +180,21 @@
         <h2>From need to curated bundle in three steps.</h2>
       </div>
       <div class="landing-steps">
-        <div class="landing-step"><span>1</span><strong>Pick your goal</strong><p>Moving homes, starting college, planning a trip, or buying a gift.</p></div>
-        <div class="landing-step"><span>2</span><strong>Customize the bundle</strong><p>Adjust budget, brand, color, and style to match your preference.</p></div>
-        <div class="landing-step"><span>3</span><strong>Checkout in one go</strong><p>Review everything together and buy a complete, coherent bundle.</p></div>
+        <div class="landing-step">
+          <div class="landing-step-badge">1</div>
+          <strong>Pick your goal</strong>
+          <p>Moving homes, starting college, planning a trip, or buying a gift.</p>
+        </div>
+        <div class="landing-step">
+          <div class="landing-step-badge">2</div>
+          <strong>Customize the bundle</strong>
+          <p>Adjust budget, brand, color, and style to match your preference.</p>
+        </div>
+        <div class="landing-step">
+          <div class="landing-step-badge">3</div>
+          <strong>Checkout in one go</strong>
+          <p>Review everything together and buy a complete, coherent bundle.</p>
+        </div>
       </div>
     </section>
 
@@ -286,7 +314,10 @@
         </div>
         <div class="auth-field">
           <label class="auth-label">Password</label>
-          <input class="auth-input" type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')signInEmail()" />
+          <div class="auth-input-group">
+            <input class="auth-input password-input" type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')signInEmail()" />
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('login-password', this)" aria-label="Show password">👁</button>
+          </div>
         </div>
         <button class="auth-btn auth-btn-primary" onclick="signInEmail()" id="login-btn">Sign in</button>
         <div class="auth-footer">No account? <a onclick="switchTab('signup')">Create one free</a></div>
@@ -304,7 +335,10 @@
         </div>
         <div class="auth-field">
           <label class="auth-label">Password</label>
-          <input class="auth-input" type="password" id="signup-password" placeholder="At least 6 characters" onkeydown="if(event.key==='Enter')signUpEmail()" />
+          <div class="auth-input-group">
+            <input class="auth-input password-input" type="password" id="signup-password" placeholder="At least 6 characters" onkeydown="if(event.key==='Enter')signUpEmail()" />
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-password', this)" aria-label="Show password">👁</button>
+          </div>
         </div>
         <button class="auth-btn auth-btn-primary" onclick="signUpEmail()" id="signup-btn">Create account</button>
         <div class="auth-footer">Already have an account? <a onclick="switchTab('login')">Sign in</a></div>
