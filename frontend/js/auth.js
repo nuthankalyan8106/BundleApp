@@ -305,10 +305,14 @@ function signOut() {
 function showApp(isAuthed = true) {
   const landing = document.getElementById('landing-page');
   const appShell = document.getElementById('app-shell');
+  const landingChrome = document.getElementById('landing-chrome');
+  const landingHeader = document.getElementById('landing-header');
   if (!landing || !appShell) return;
 
   landing.classList.toggle('hidden', isAuthed);
   appShell.classList.toggle('hidden', !isAuthed);
+  landingChrome?.classList.toggle('hidden', isAuthed);
+  landingHeader?.classList.toggle('hidden', isAuthed);
 }
 
 function applyTheme(theme) {
