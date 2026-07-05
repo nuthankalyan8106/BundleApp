@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BundleHub – Goal-Based Shopping</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <div class="top-strip">
+    <div class="top-strip-inner">
+      <span>Free delivery on curated bundles</span>
+      <span>New: AI bundle builder for goals, budgets, and occasions</span>
+      <span>Marketplace-style shopping, simplified</span>
+    </div>
+  </div>
+
+  <!-- ── LANDING PAGE ── -->
+  <div class="landing-page" id="landing-page">
+    <section class="landing-hero">
+      <div class="landing-hero-copy">
+        <div class="landing-pill">Goal-based shopping platform</div>
+        <h1>Transform shopping intent into complete, curated bundles.</h1>
+        <p>BundleHub turns life moments into ready-to-buy experiences. Instead of searching for items one by one, start with a goal and get a complete bundle built around it.</p>
+        <div class="landing-actions">
+          <button class="btn btn-primary" onclick="openAuth('signup')">Create account</button>
+          <button class="btn btn-ghost" onclick="openAuth('login')">Sign in</button>
+        </div>
+        <div class="landing-metrics">
+          <div><strong>50+</strong><span>goal bundles</span></div>
+          <div><strong>AI</strong><span>bundle builder</span></div>
+          <div><strong>Creators</strong><span>expert curation</span></div>
+        </div>
+        <div class="landing-contact-row">
+          <div>
+            <span>Contact us</span>
+            <strong>support@bundlehub.shop</strong>
+          </div>
+          <div>
+            <span>Email sales</span>
+            <strong>hello@bundlehub.shop</strong>
+          </div>
+        </div>
+      </div>
+      <div class="landing-hero-panel">
+        <div class="landing-stat-card">
+          <span>Live bundle snapshot</span>
+          <strong>Complete bundle intelligence in one view.</strong>
+          <p>See the kind of smart, clean overview users get before they enter the marketplace.</p>
+        </div>
+        <div class="landing-dashboard-card">
+          <div class="landing-dashboard-topline">
+            <div>
+              <span>Recommended for you</span>
+              <strong>First Job Starter Bundle</strong>
+            </div>
+            <div class="landing-score">92% match</div>
+          </div>
+          <div class="landing-dashboard-chart">
+            <div class="landing-bar high"></div>
+            <div class="landing-bar medium"></div>
+            <div class="landing-bar high"></div>
+            <div class="landing-bar low"></div>
+            <div class="landing-bar medium"></div>
+            <div class="landing-bar high"></div>
+          </div>
+          <div class="landing-dashboard-grid">
+            <div><span>Bundle value</span><strong>₹5,799</strong></div>
+            <div><span>You save</span><strong>20%</strong></div>
+            <div><span>Items</span><strong>6</strong></div>
+            <div><span>Delivery</span><strong>2 days</strong></div>
+          </div>
+        </div>
+        <div class="landing-preview-grid">
+          <div class="landing-preview-item">Interview Ready</div>
+          <div class="landing-preview-item">New Home Setup</div>
+          <div class="landing-preview-item">Travel Kit</div>
+          <div class="landing-preview-item">WFH Setup</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="landing-section-heading">
+        <span>Why choose BundleHub</span>
+        <h2>Everything you need is organized around outcomes, not categories.</h2>
+      </div>
+      <div class="landing-feature-grid">
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">🎯</div>
+          <h3>Goal-first bundles</h3>
+          <p>Choose what you’re trying to achieve and get a ready-made bundle instead of hunting item by item.</p>
+        </article>
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">✦</div>
+          <h3>AI bundle builder</h3>
+          <p>Describe your situation, budget, and style. BundleHub assembles a practical list instantly.</p>
+        </article>
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">👑</div>
+          <h3>Creator curation</h3>
+          <p>Follow expert-curated bundles from creators, designers, coaches, and category specialists.</p>
+        </article>
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">⚡</div>
+          <h3>Fast comparison</h3>
+          <p>See bundle value, savings, and item breakdowns clearly without jumping across categories.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-section landing-trust-section">
+      <div class="landing-section-heading">
+        <span>Trusted by future shoppers</span>
+        <h2>Built for people who want a cleaner, faster way to buy.</h2>
+      </div>
+      <div class="landing-trust-grid">
+        <div class="landing-trust-card">
+          <strong>Students</strong>
+          <p>Hostel, campus, and first-job readiness bundles.</p>
+        </div>
+        <div class="landing-trust-card">
+          <strong>Families</strong>
+          <p>Home setup, baby care, gifts, and seasonal bundles.</p>
+        </div>
+        <div class="landing-trust-card">
+          <strong>Creators</strong>
+          <p>Curated recommendations from people who know the category.</p>
+        </div>
+        <div class="landing-trust-card">
+          <strong>Brands</strong>
+          <p>Better product grouping, clearer demand, and stronger conversion.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section landing-section-split">
+      <div class="landing-section-heading">
+        <span>How it works</span>
+        <h2>From need to curated bundle in three steps.</h2>
+      </div>
+      <div class="landing-steps">
+        <div class="landing-step"><span>1</span><strong>Pick your goal</strong><p>Moving homes, starting college, planning a trip, or buying a gift.</p></div>
+        <div class="landing-step"><span>2</span><strong>Customize the bundle</strong><p>Adjust budget, brand, color, and style to match your preference.</p></div>
+        <div class="landing-step"><span>3</span><strong>Checkout in one go</strong><p>Review everything together and buy a complete, coherent bundle.</p></div>
+      </div>
+    </section>
+
+    <section class="landing-section landing-contact-section">
+      <div class="landing-section-heading">
+        <span>Contact us</span>
+        <h2>Need help, partnerships, or creator onboarding?</h2>
+      </div>
+      <div class="landing-contact-grid">
+        <div class="landing-contact-card">
+          <label>Email support</label>
+          <strong>support@bundlehub.shop</strong>
+          <p>For login issues, account questions, and general support.</p>
+        </div>
+        <div class="landing-contact-card">
+          <label>Business / creators</label>
+          <strong>partners@bundlehub.shop</strong>
+          <p>For brand collaborations, creator bundles, and marketplace partnerships.</p>
+        </div>
+        <div class="landing-contact-card">
+          <label>Response time</label>
+          <strong>Within 24 hours</strong>
+          <p>We try to respond quickly during business hours.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section landing-testimonials-section">
+      <div class="landing-section-heading">
+        <span>What people want</span>
+        <h2>People don’t want more tabs. They want a simpler path to the right bundle.</h2>
+      </div>
+      <div class="landing-testimonial-grid">
+        <blockquote class="landing-testimonial-card">
+          <p>“I just want a complete setup, not a dozen separate product searches.”</p>
+          <footer>First-job shoppers</footer>
+        </blockquote>
+        <blockquote class="landing-testimonial-card">
+          <p>“A goal-based interface makes the buying journey feel much more intentional.”</p>
+          <footer>Home setup buyers</footer>
+        </blockquote>
+        <blockquote class="landing-testimonial-card">
+          <p>“I want bundles that reflect real use cases, not generic product lists.”</p>
+          <footer>Travel and gifting users</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="landing-section landing-faq-section">
+      <div class="landing-section-heading">
+        <span>FAQ</span>
+        <h2>Quick answers before you get started.</h2>
+      </div>
+      <div class="landing-faq-grid">
+        <details class="landing-faq-item" open>
+          <summary>What is BundleHub?</summary>
+          <p>A goal-based shopping platform that bundles products around life events, needs, and experiences.</p>
+        </details>
+        <details class="landing-faq-item">
+          <summary>How does the AI builder work?</summary>
+          <p>You describe your situation, budget, and preferences. BundleHub suggests a complete bundle you can customize.</p>
+        </details>
+        <details class="landing-faq-item">
+          <summary>Can I edit bundles?</summary>
+          <p>Yes. You can replace, remove, upgrade, or add items before checkout.</p>
+        </details>
+        <details class="landing-faq-item">
+          <summary>How do creators participate?</summary>
+          <p>Creators can publish curated bundles and earn commissions when their collections are purchased.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="landing-final-cta">
+      <div>
+        <span>Ready to get started?</span>
+        <h2>Join BundleHub and build your first goal-based bundle.</h2>
+      </div>
+      <div class="landing-actions">
+        <button class="btn btn-primary" onclick="openAuth('signup')">Create account</button>
+        <button class="btn btn-ghost" onclick="openAuth('login')">Sign in</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── AUTH OVERLAY ── -->
+  <div class="auth-overlay" id="auth-overlay">
+    <div class="auth-modal">
+      <button class="auth-close" onclick="closeAuth()">✕</button>
+      <div class="auth-logo"><div class="auth-logo-icon">🎯</div> BundleHub</div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign in</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create account</button>
+      </div>
+
+      <div id="auth-error" class="auth-error"></div>
+      <div id="auth-success" class="auth-success"></div>
+
+      <button class="google-btn" onclick="signInWithGoogle()">
+        <svg class="google-icon" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-divider"><span>or continue with email</span></div>
+
+      <!-- LOGIN FORM -->
+      <div id="form-login" class="auth-form">
+        <div class="auth-field">
+          <label class="auth-label">Email address</label>
+          <input class="auth-input" type="email" id="login-email" placeholder="you@example.com" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')signInEmail()" />
+        </div>
+        <button class="auth-btn auth-btn-primary" onclick="signInEmail()" id="login-btn">Sign in</button>
+        <div class="auth-footer">No account? <a onclick="switchTab('signup')">Create one free</a></div>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div id="form-signup" class="auth-form" style="display:none;">
+        <div class="auth-field">
+          <label class="auth-label">Full name</label>
+          <input class="auth-input" type="text" id="signup-name" placeholder="Your name" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Email address</label>
+          <input class="auth-input" type="email" id="signup-email" placeholder="you@example.com" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="signup-password" placeholder="At least 6 characters" onkeydown="if(event.key==='Enter')signUpEmail()" />
+        </div>
+        <button class="auth-btn auth-btn-primary" onclick="signUpEmail()" id="signup-btn">Create account</button>
+        <div class="auth-footer">Already have an account? <a onclick="switchTab('login')">Sign in</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-shell" class="app-shell hidden">
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">🎯</div>
+      BundleHub
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" id="nav-home" class="active">Explore</a></li>
+      <li><a onclick="showPage('ai')" id="nav-ai">AI Builder</a></li>
+      <li><a onclick="showPage('creators')" id="nav-creators">Creators</a></li>
+    </ul>
+    <div class="nav-search">
+      <input type="text" id="nav-search-input" placeholder="Search bundles, goals, or categories" onkeydown="if(event.key==='Enter')runHeroSearchFromNav()" />
+      <button onclick="runHeroSearchFromNav()">Search</button>
+    </div>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="showPage('cart')">
+        🛒 Cart <div class="cart-count" id="cart-count">0</div>
+      </button>
+      <div id="nav-auth-out" style="display:flex;gap:8px;">
+        <button class="btn btn-ghost" onclick="openAuth('login')">Sign in</button>
+        <button class="btn btn-primary" onclick="openAuth('signup')">Sign up</button>
+      </div>
+      <div id="nav-auth-in" style="display:none;">
+        <div class="user-menu" id="user-menu">
+          <div class="user-avatar" id="user-avatar" onclick="toggleDropdown()"></div>
+          <div class="user-dropdown" id="user-dropdown">
+            <div class="user-dropdown-header">
+              <div class="user-dropdown-name" id="dd-name">—</div>
+              <div class="user-dropdown-email" id="dd-email">—</div>
+            </div>
+            <div class="dropdown-item" onclick="showPage('profile');toggleDropdown()">👤 My profile</div>
+            <div class="dropdown-item" onclick="showPage('cart');toggleDropdown()">🛒 My cart</div>
+            <div class="dropdown-item" onclick="showPage('creators');toggleDropdown()">👑 Creators</div>
+            <div class="dropdown-item danger" onclick="signOut()">Sign out</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HOME PAGE ── -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-kicker">India's goal-based shopping marketplace</div>
+      <h1>Don't shop for products.<br><span>Shop for goals.</span></h1>
+      <p>Tell us what you're trying to achieve. We'll bundle everything you need, curated by AI and community experts.</p>
+      <div class="hero-search">
+        <input type="text" id="hero-search-input" placeholder='Try "moving into a new apartment"...' onkeydown="if(event.key==='Enter')runHeroSearch()" />
+        <button onclick="runHeroSearch()">Build Bundle →</button>
+      </div>
+      <div class="hero-tags">
+        <div class="hero-tag" onclick="quickSearch('Starting my first job')">💼 First job</div>
+        <div class="hero-tag" onclick="quickSearch('College hostel setup')">🎓 College hostel</div>
+        <div class="hero-tag" onclick="quickSearch('Work from home setup')">💻 WFH setup</div>
+        <div class="hero-tag" onclick="quickSearch('7-day trip to Goa')">✈ Goa trip</div>
+        <div class="hero-tag" onclick="quickSearch('Home gym setup')">🏋 Home gym</div>
+        <div class="hero-tag" onclick="quickSearch('Gaming PC setup')">🎮 Gaming</div>
+      </div>
+    </div>
+
+    <div class="categories-bar">
+      <div class="cat-tab active" onclick="filterCat('all',this)">🌟 All</div>
+      <div class="cat-tab" onclick="filterCat('fashion',this)">👔 Fashion</div>
+      <div class="cat-tab" onclick="filterCat('home',this)">🏠 Home</div>
+      <div class="cat-tab" onclick="filterCat('college',this)">🎓 College</div>
+      <div class="cat-tab" onclick="filterCat('work',this)">💻 Work</div>
+      <div class="cat-tab" onclick="filterCat('gaming',this)">🎮 Gaming</div>
+      <div class="cat-tab" onclick="filterCat('fitness',this)">🏋 Fitness</div>
+      <div class="cat-tab" onclick="filterCat('travel',this)">✈ Travel</div>
+      <div class="cat-tab" onclick="filterCat('baby',this)">👶 Baby</div>
+      <div class="cat-tab" onclick="filterCat('wedding',this)">💍 Wedding</div>
+      <div class="cat-tab" onclick="filterCat('pet',this)">🐶 Pet</div>
+      <div class="cat-tab" onclick="filterCat('gift',this)">🎁 Gifts</div>
+    </div>
+
+    <div class="main">
+      <div class="deal-band">
+        <div>
+          <strong>Today's big deal:</strong> Curated bundles with smarter savings and faster checkout.
+        </div>
+        <span>Explore top picks</span>
+      </div>
+      <div class="section-header">
+        <h2 class="section-title" id="cat-title">🔥 Trending Bundles</h2>
+        <a class="see-all">View all →</a>
+      </div>
+      <div class="bundles-grid" id="bundles-grid"></div>
+
+      <div class="ai-section">
+        <div class="ai-label">✦ AI Bundle Builder</div>
+        <h2>What's your goal today?</h2>
+        <p>Describe your situation and our AI builds a perfect, personalized bundle.</p>
+        <div class="ai-input-row">
+          <input type="text" id="ai-input-home" placeholder='e.g. "I'm joining a startup next week"' onkeydown="if(event.key==='Enter')goToAI()" />
+          <button onclick="goToAI()">Generate →</button>
+        </div>
+        <div class="ai-examples">
+          <div class="ai-example" onclick="setAIExample('Moving into a 1BHK flat in Bangalore')">Moving into 1BHK</div>
+          <div class="ai-example" onclick="setAIExample('New gaming setup under ₹80,000')">Gaming setup ₹80k</div>
+          <div class="ai-example" onclick="setAIExample('Newborn baby essentials')">Newborn essentials</div>
+          <div class="ai-example" onclick="setAIExample('Complete photography starter kit')">Photography kit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BUNDLE DETAIL PAGE ── -->
+  <div class="page" id="page-detail">
+    <div class="bundle-detail">
+      <div class="detail-back" onclick="showPage('home')">← Back to bundles</div>
+      <div id="detail-content"></div>
+    </div>
+  </div>
+
+  <!-- ── AI BUILDER PAGE ── -->
+  <div class="page" id="page-ai">
+    <div class="ai-result-page">
+      <div class="detail-back" onclick="showPage('home')">← Back to explore</div>
+      <div class="ai-section" style="margin-bottom:2rem;">
+        <div class="ai-label">✦ AI Bundle Builder</div>
+        <h2>What are you trying to achieve?</h2>
+        <p>Describe your goal, occasion, or situation and we'll build a complete bundle tailored to you.</p>
+        <div class="ai-input-row">
+          <input type="text" id="ai-input-main" placeholder='e.g. "I'm starting a YouTube channel"' onkeydown="if(event.key==='Enter')generateBundle()" />
+          <button onclick="generateBundle()">Build Bundle →</button>
+        </div>
+        <div class="ai-examples">
+          <div class="ai-example" onclick="setAIExampleMain('I am joining my first IT job next month')">First IT job</div>
+          <div class="ai-example" onclick="setAIExampleMain('Going on a 10-day Europe trip')">Europe trip</div>
+          <div class="ai-example" onclick="setAIExampleMain('Setting up a home studio for music production')">Music studio</div>
+          <div class="ai-example" onclick="setAIExampleMain('New parents preparing for baby arrival')">New parents</div>
+        </div>
+      </div>
+      <div id="ai-result"></div>
+    </div>
+  </div>
+
+  <!-- ── CREATORS PAGE ── -->
+  <div class="page" id="page-creators">
+    <div class="main">
+      <div class="section-header" style="margin-top:1rem;">
+        <h2 class="section-title">👑 Creator Bundles</h2>
+        <button class="btn btn-primary">+ Create Bundle</button>
+      </div>
+      <div class="bundles-grid" id="creators-grid"></div>
+    </div>
+  </div>
+
+  <!-- ── CART PAGE ── -->
+  <div class="page" id="page-cart">
+    <div class="cart-page">
+      <div class="detail-back" onclick="showPage('home')">← Keep shopping</div>
+      <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:1.5rem;">Your cart</h2>
+      <div id="cart-content"></div>
+    </div>
+  </div>
+
+  <!-- ── PROFILE PAGE ── -->
+  <div class="page" id="page-profile">
+    <div class="profile-page">
+      <div class="detail-back" onclick="showPage('home')">← Back to explore</div>
+      <div class="profile-card" style="text-align:center;">
+        <div class="profile-avatar-large" id="profile-avatar-large"></div>
+        <div class="profile-name" id="profile-name">—</div>
+        <div class="profile-email" id="profile-email">—</div>
+        <div class="profile-provider" id="profile-provider"></div>
+        <div class="profile-stat-row">
+          <div class="profile-stat"><div class="profile-stat-num" id="stat-cart">0</div><div class="profile-stat-label">In cart</div></div>
+          <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Saved bundles</div></div>
+          <div class="profile-stat"><div class="profile-stat-num">0</div><div class="profile-stat-label">Orders</div></div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <h3 style="font-weight:700;margin-bottom:1rem;">Account settings</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+            <div><div style="font-weight:600;font-size:0.9rem;">Email notifications</div><div style="font-size:0.78rem;color:var(--text-muted);">Bundle deals and new arrivals</div></div>
+            <input type="checkbox" checked style="accent-color:var(--accent);width:18px;height:18px;">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
+            <div><div style="font-weight:600;font-size:0.9rem;">AI bundle suggestions</div><div style="font-size:0.78rem;color:var(--text-muted);">Personalised recommendations</div></div>
+            <input type="checkbox" checked style="accent-color:var(--accent);width:18px;height:18px;">
+          </div>
+        </div>
+      </div>
+      <button class="btn-large btn-outline" style="width:100%;color:#ef4444;border-color:#ef4444;" onclick="signOut()">Sign out</button>
+    </div>
+  </div>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    window.BUNDLEHUB_API_BASE = window.BUNDLEHUB_API_BASE || 'http://localhost:3000';
+  </script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ai.js"></script>
+
+</div>
+
+</body>
+</html>
