@@ -26,6 +26,24 @@
     showToast('Subscribed — we will ship this on your cadence.');
     closeSubscribeModal();
     renderSubscriptionCount();
+    // show a mock confirmation email so product/marketing can preview
+    const title = modal.querySelector('#subscribe-bundle-title').textContent || bundleId;
+    showMockEmail({
+      to: 'you@example.com',
+      subject: `Your subscription to ${title}`,
+      body: `Hi there,\n\nThanks for subscribing to ${title}.\nCadence: ${cadence}\n\nWe'll send your first box soon!\n\n— The BundleBasket team`
+    });
+  }
+
+  function showMockEmail(email){
+    const em = document.getElementById('email-mock');
+    if(!em) return;
+    em.querySelector('#email-to').textContent = email.to || 'you@example.com';
+    em.querySelector('#email-subject').textContent = email.subject || 'Subscription confirmed';
+    em.querySelector('#email-body').textContent = email.body || '';
+    em.classList.add('open');
+    // wire close buttons
+    em.querySelectorAll('.email-close').forEach(b => b.addEventListener('click', ()=> em.classList.remove('open')));
   }
 
   function renderSubscriptionCount(){

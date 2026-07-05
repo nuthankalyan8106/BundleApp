@@ -268,9 +268,29 @@
           <label><input type="radio" name="cadence" value="quarterly"/> Quarterly</label>
         </div>
         <div style="display:flex;gap:8px;">
-          <button class="btn btn-primary" onclick="BundleSubs.subscribeNow()">Confirm Subscribe</button>
+          <button class="btn btn-primary" onclick="BundleSubs.subscribeNow()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:8px;vertical-align:middle;">
+              <path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Confirm Subscribe
+          </button>
           <button class="btn btn-ghost close" onclick="BundleSubs.closeSubscribeModal()">Cancel</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mock confirmation email preview -->
+    <div id="email-mock" class="auth-overlay" style="display:none;">
+      <div class="auth-modal" role="dialog" aria-modal="true">
+        <button class="auth-close email-close">✕</button>
+        <div class="auth-logo"><div class="auth-logo-icon"><img src="logo.svg" alt=""/></div> BundleBasket</div>
+        <h3 id="email-subject">Subscription confirmed</h3>
+        <div style="margin-top:12px;">
+          <div style="font-weight:700;color:var(--text-muted);font-size:0.9rem;">To:</div>
+          <div id="email-to" style="margin-bottom:12px;color:var(--primary);">you@example.com</div>
+          <pre id="email-body" style="white-space:pre-wrap;background:var(--surface-1);padding:12px;border-radius:8px;border:1px solid var(--border);">Thanks for subscribing!</pre>
+        </div>
+        <div style="margin-top:14px;text-align:right;"><button class="btn btn-primary email-close">Close</button></div>
       </div>
     </div>
 
