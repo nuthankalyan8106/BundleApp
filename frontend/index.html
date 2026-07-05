@@ -222,6 +222,58 @@
       </div>
     </section>
 
+    <!-- Weekly curated bundles (prototype) -->
+    <section class="landing-section" id="weekly-curated">
+      <div class="landing-section-heading">
+        <span>Weekly drop</span>
+        <h2>This week’s curated mini‑boxes — pick one to subscribe.</h2>
+      </div>
+      <div class="landing-feature-grid" id="weekly-grid">
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">🍱</div>
+          <h3>Meal Prep Mini</h3>
+          <p>3 quick dinner kits, shopping list, and tips — delivered weekly.</p>
+          <div>
+            <button class="btn btn-primary" onclick="BundleSubs.openSubscribeModal('meal-prep','Meal Prep Mini')">Subscribe</button>
+          </div>
+        </article>
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">🧼</div>
+          <h3>Home Essentials Refill</h3>
+          <p>Toiletries & cleaners — refill every month to keep your home stocked.</p>
+          <div>
+            <button class="btn btn-primary" onclick="BundleSubs.openSubscribeModal('home-refill','Home Essentials Refill')">Subscribe</button>
+          </div>
+        </article>
+        <article class="landing-feature-card">
+          <div class="landing-feature-icon">🐶</div>
+          <h3>Pet Food Rotation</h3>
+          <p>High‑quality kibble rotation pack — customizable and recurring.</p>
+          <div>
+            <button class="btn btn-primary" onclick="BundleSubs.openSubscribeModal('pet-rotation','Pet Food Rotation')">Subscribe</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Subscribe modal (prototype) -->
+    <div id="subscribe-modal" class="auth-overlay" style="display:none;">
+      <div class="auth-modal" role="dialog" aria-modal="true">
+        <button class="auth-close close">✕</button>
+        <div class="auth-logo"><div class="auth-logo-icon"><img src="logo.svg" alt=""/></div> <strong id="subscribe-bundle-title">Subscribe</strong></div>
+        <p>Select cadence</p>
+        <div style="display:flex;gap:12px;margin:12px 0;">
+          <label><input type="radio" name="cadence" value="weekly" checked/> Weekly</label>
+          <label><input type="radio" name="cadence" value="monthly"/> Monthly</label>
+          <label><input type="radio" name="cadence" value="quarterly"/> Quarterly</label>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-primary" onclick="BundleSubs.subscribeNow()">Confirm Subscribe</button>
+          <button class="btn btn-ghost close" onclick="BundleSubs.closeSubscribeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <section class="landing-section landing-testimonials-section">
       <div class="landing-section-heading">
         <span>What people want</span>
@@ -573,6 +625,7 @@
   <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
   <script src="js/ai.js"></script>
+  <script src="js/subscriptions.js"></script>
 
 </div>
 
