@@ -5,6 +5,24 @@
 // ─────────────────────────────────────────────
 
 const API_BASE = window.BUNDLEBASKET_API_BASE || 'http://localhost:3000';
+let firebaseAuth = null;
+
+function getFirebaseAuth() {
+  if (firebaseAuth) {
+    return firebaseAuth;
+  }
+
+  if (!window.firebase || !window.FIREBASE_CONFIG) {
+    return null;
+  }
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(window.FIREBASE_CONFIG);
+  }
+
+  firebaseAuth = firebase.auth();
+  return firebaseAuth;
+}
 
 // ── Simple hash (obfuscation, not cryptographic) ──
 function simpleHash(str) {
@@ -235,41 +253,45 @@ async function signInEmail() {
 
 function signInWithGoogle() {
   clearAuthMessages();
-  showGoogleComingSoon();
-}
+  const auth = getFirebaseAuth();
 
-function showGoogleComingSoon() {
-  document.getElementById('google-notice')?.remove();
+  if (!auth) {
+    showAuthError('Firebase is not configured yet. Add the Firebase config in the page to enable Google sign-in.');
+    return;
+  }
 
-  const notice = document.createElement('div');
-  notice.id = 'google-notice';
-  notice.style.cssText = `
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
-    display: flex; align-items: center; justify-content: center;
-    padding: 1rem;
-  `;
-  notice.innerHTML = `
-    <div style="background:white;border-radius:16px;padding:2rem;width:100%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);">
-      <div style="font-size:2.5rem;margin-bottom:1rem;">🔐</div>
-      <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.5rem;">Google Sign-In</div>
-      <p style="font-size:0.85rem;color:#6b6b8a;line-height:1.6;margin-bottom:1.5rem;">
-        Real Google OAuth requires a Firebase project.<br><br>
-        <strong>To enable it:</strong><br>
-        1. Go to <a href="https://console.firebase.google.com" target="_blank" style="color:#6c63ff;">console.firebase.google.com</a><br>
-        2. Create a project → Enable Google sign-in<br>
-        3. Share your Firebase config and we'll plug it in instantly.
-      </p>
-      <div style="display:flex;gap:10px;justify-content:center;">
-        <button onclick="document.getElementById('google-notice').remove()" style="padding:10px 24px;border-radius:8px;border:1.5px solid #e2e2f0;background:transparent;font-weight:600;cursor:pointer;">Close</button>
-        <button onclick="window.open('https://console.firebase.google.com','_blank');document.getElementById('google-notice').remove()" style="padding:10px 24px;border-radius:8px;border:none;background:#6c63ff;color:white;font-weight:600;cursor:pointer;">Set up Firebase →</button>
-      </div>
-    </div>`;
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
 
-  document.body.appendChild(notice);
-  notice.addEventListener('click', e => { if (e.target === notice) notice.remove(); });
+  auth.signInWithPopup(provider)
+    .then(async result => {
+      const user = result.user;
+      if (!user) {
+        showAuthError('Google sign-in did not return a user.');
+        return;
+      }
+
+      const session = {
+        uid: user.uid,
+        displayName: user.displayName || 'Google User',
+        email: user.email || '',
+        provider: 'google.com',
+        photoURL: user.photoURL || null,
+        token: await user.getIdToken(),
+      };
+
+      saveSession(session);
+      closeAuth();
+      onLogin(session);
+      showAuthSuccess('Signed in with Google.');
+    })
+    .catch(error => {
+      if (error?.code === 'auth/popup-closed-by-user') {
+        return;
+      }
+
+      showAuthError(error?.message || 'Google sign-in failed.');
+    });
 }
 
 // ── SIGN OUT ──
