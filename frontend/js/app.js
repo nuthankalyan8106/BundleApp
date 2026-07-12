@@ -26,6 +26,16 @@ function showPage(name) {
   if (name === 'creators') renderBundles(CREATOR_BUNDLES, 'creators-grid');
   if (name === 'profile')  document.getElementById('stat-cart').textContent = cart.length;
 
+  // Nav style: dark/transparent on home, light on other pages
+  const shell = document.getElementById('app-shell');
+  if (shell) {
+    if (name === 'home') {
+      shell.classList.remove('nav-light');
+    } else {
+      shell.classList.add('nav-light');
+    }
+  }
+
   window.scrollTo(0, 0);
 }
 
@@ -85,14 +95,19 @@ function renderBundles(list, containerId) {
   });
 }
 
-// ── Category filter ──
+// ── Category filter (used by old cat-tabs, kept for detail page back-nav) ──
 function filterCat(cat, el) {
+  // Fashion has its own dedicated module — hand off and return
+  if (cat === 'fashion') {
+    Fashion.showLanding();
+    return;
+  }
+
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
+  if (el) el.classList.add('active');
 
   const titles = {
     all:     '🔥 Trending Bundles',
-    fashion: '👔 Fashion Bundles',
     home:    '🏠 Home Setup Bundles',
     college: '🎓 College Bundles',
     work:    '💻 Work Bundles',
@@ -104,10 +119,53 @@ function filterCat(cat, el) {
     pet:     '🐶 Pet Bundles',
     gift:    '🎁 Gift Bundles',
   };
-  document.getElementById('cat-title').textContent = titles[cat] || '🌟 Bundles';
+  const titleEl = document.getElementById('cat-title');
+  if (titleEl) titleEl.textContent = titles[cat] || '🌟 Bundles';
 
   const filtered = cat === 'all' ? BUNDLES : BUNDLES.filter(b => b.cat === cat);
   renderBundles(filtered, 'bundles-grid');
+}
+
+// ── Big category card click handler ──
+function filterCatCards(cat) {
+  // Update active state on cards
+  document.querySelectorAll('.cat-big-card').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  const titles = {
+    home:    '🏠 Home Setup Bundles',
+    college: '🎓 College Bundles',
+    work:    '💻 Work Bundles',
+    gaming:  '🎮 Gaming Bundles',
+    fitness: '🏋 Fitness Bundles',
+    travel:  '✈ Travel Bundles',
+    baby:    '👶 Baby Bundles',
+    wedding: '💍 Wedding Bundles',
+    pet:     '🐶 Pet Bundles',
+    gift:    '🎁 Gift Bundles',
+  };
+
+  const titleEl = document.getElementById('cat-title');
+  if (titleEl) titleEl.textContent = titles[cat] || '🌟 Bundles';
+
+  const filtered = BUNDLES.filter(b => b.cat === cat);
+  renderBundles(filtered, 'bundles-grid');
+
+  // Show the bundles panel
+  const panel = document.getElementById('cat-bundles-panel');
+  if (panel) {
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// ── Hide bundles panel and go back to category grid ──
+function hideCatBundles() {
+  const panel = document.getElementById('cat-bundles-panel');
+  if (panel) panel.style.display = 'none';
+  document.querySelectorAll('.cat-big-card').forEach(c => c.classList.remove('active'));
+  document.querySelector('.cat-cards-section')
+    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ── Bundle detail page ──
@@ -265,5 +323,6 @@ function goToAI() {
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
-  renderBundles(BUNDLES, 'bundles-grid');
+  // bundles-grid is now inside a hidden panel — no pre-render needed
+  if (typeof Fashion !== 'undefined') Fashion.init();
 });

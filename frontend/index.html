@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/auth.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/fashion.css" />
 </head>
 <body>
 
@@ -463,52 +464,157 @@
 
   <!-- ── HOME PAGE ── -->
   <div class="page active" id="page-home">
-    <div class="hero">
-      <div class="hero-kicker">India's goal-based shopping marketplace</div>
-      <h1>Don't shop for products.<br><span>Shop for goals.</span></h1>
-      <p>Tell us what you're trying to achieve. We'll bundle everything you need, curated by AI and community experts.</p>
-      <div class="hero-search">
-        <input type="text" id="hero-search-input" placeholder='Try "moving into a new apartment"...' onkeydown="if(event.key==='Enter')runHeroSearch()" />
-        <button onclick="runHeroSearch()">Build Bundle →</button>
+
+    <!-- ── PREMIUM HERO ── -->
+    <div class="home-hero">
+      <div class="home-hero-bg"></div>
+      <div class="home-hero-overlay"></div>
+
+      <!-- Floating ambient orbs -->
+      <div class="home-hero-orb home-hero-orb-1"></div>
+      <div class="home-hero-orb home-hero-orb-2"></div>
+
+      <div class="home-hero-content">
+        <div class="home-hero-eyebrow">
+          <span class="home-hero-dot"></span>
+          India's goal-based shopping marketplace
+        </div>
+        <h1 class="home-hero-h1">
+          Don't shop for products.<br>
+          <span class="home-hero-h1-accent">Shop for goals.</span>
+        </h1>
+        <p class="home-hero-p">Tell us what you're trying to achieve. We'll bundle everything you need, curated by AI and community experts.</p>
+
+        <!-- Search bar -->
+        <div class="home-hero-search-wrap">
+          <div class="home-hero-search">
+            <svg class="home-hero-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="hero-search-input" placeholder='Try "starting my first job"...' onkeydown="if(event.key==='Enter')runHeroSearch()" />
+            <button class="home-hero-search-btn" onclick="runHeroSearch()">
+              Build Bundle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick tags -->
+        <div class="home-hero-tags">
+          <div class="home-hero-tag" onclick="quickSearch('Starting my first job')">💼 First job</div>
+          <div class="home-hero-tag" onclick="quickSearch('College hostel setup')">🎓 College hostel</div>
+          <div class="home-hero-tag" onclick="quickSearch('Work from home setup')">💻 WFH setup</div>
+          <div class="home-hero-tag" onclick="quickSearch('7-day trip to Goa')">✈ Goa trip</div>
+          <div class="home-hero-tag" onclick="quickSearch('Home gym setup')">🏋 Home gym</div>
+          <div class="home-hero-tag" onclick="quickSearch('Gaming PC setup')">🎮 Gaming</div>
+        </div>
       </div>
-      <div class="hero-tags">
-        <div class="hero-tag" onclick="quickSearch('Starting my first job')">💼 First job</div>
-        <div class="hero-tag" onclick="quickSearch('College hostel setup')">🎓 College hostel</div>
-        <div class="hero-tag" onclick="quickSearch('Work from home setup')">💻 WFH setup</div>
-        <div class="hero-tag" onclick="quickSearch('7-day trip to Goa')">✈ Goa trip</div>
-        <div class="hero-tag" onclick="quickSearch('Home gym setup')">🏋 Home gym</div>
-        <div class="hero-tag" onclick="quickSearch('Gaming PC setup')">🎮 Gaming</div>
+
+      <!-- Floating stats strip -->
+      <div class="home-hero-stats">
+        <div class="home-hero-stat">
+          <strong>50+</strong><span>Curated bundles</span>
+        </div>
+        <div class="home-hero-stat-divider"></div>
+        <div class="home-hero-stat">
+          <strong>AI</strong><span>Personalised picks</span>
+        </div>
+        <div class="home-hero-stat-divider"></div>
+        <div class="home-hero-stat">
+          <strong>₹0</strong><span>Platform fee</span>
+        </div>
+        <div class="home-hero-stat-divider"></div>
+        <div class="home-hero-stat">
+          <strong>11</strong><span>Categories</span>
+        </div>
       </div>
     </div>
 
-    <div class="categories-bar">
-      <div class="cat-tab active" onclick="filterCat('all',this)">🌟 All</div>
-      <div class="cat-tab" onclick="filterCat('fashion',this)">👔 Fashion</div>
-      <div class="cat-tab" onclick="filterCat('home',this)">🏠 Home</div>
-      <div class="cat-tab" onclick="filterCat('college',this)">🎓 College</div>
-      <div class="cat-tab" onclick="filterCat('work',this)">💻 Work</div>
-      <div class="cat-tab" onclick="filterCat('gaming',this)">🎮 Gaming</div>
-      <div class="cat-tab" onclick="filterCat('fitness',this)">🏋 Fitness</div>
-      <div class="cat-tab" onclick="filterCat('travel',this)">✈ Travel</div>
-      <div class="cat-tab" onclick="filterCat('baby',this)">👶 Baby</div>
-      <div class="cat-tab" onclick="filterCat('wedding',this)">💍 Wedding</div>
-      <div class="cat-tab" onclick="filterCat('pet',this)">🐶 Pet</div>
-      <div class="cat-tab" onclick="filterCat('gift',this)">🎁 Gifts</div>
+    <!-- ── BIG CATEGORY CARDS ── -->
+    <div class="cat-cards-section-label">
+      <h2>Explore by category</h2>
+      <p>Choose a category to discover curated bundles for every goal.</p>
+    </div>
+    <div class="cat-cards-section">
+      <div class="cat-cards-grid" id="cat-cards-grid">
+
+        <div class="cat-big-card" onclick="Fashion.showLanding()">
+          <div class="cat-big-icon">👔</div>
+          <div class="cat-big-label">Fashion</div>
+          <div class="cat-big-sub">Interview, Casual &amp; Premium</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('home')">
+          <div class="cat-big-icon">🏠</div>
+          <div class="cat-big-label">Home</div>
+          <div class="cat-big-sub">Kitchen, Bedroom &amp; Décor</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('college')">
+          <div class="cat-big-icon">🎓</div>
+          <div class="cat-big-label">College</div>
+          <div class="cat-big-sub">Hostel, Campus &amp; Student Life</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('work')">
+          <div class="cat-big-icon">💻</div>
+          <div class="cat-big-label">Work</div>
+          <div class="cat-big-sub">WFH, Office &amp; Productivity</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('gaming')">
+          <div class="cat-big-icon">🎮</div>
+          <div class="cat-big-label">Gaming</div>
+          <div class="cat-big-sub">PC, Console &amp; Accessories</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('fitness')">
+          <div class="cat-big-icon">🏋</div>
+          <div class="cat-big-label">Fitness</div>
+          <div class="cat-big-sub">Home Gym &amp; Workouts</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('travel')">
+          <div class="cat-big-icon">✈</div>
+          <div class="cat-big-label">Travel</div>
+          <div class="cat-big-sub">Trips, Getaways &amp; Gear</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('baby')">
+          <div class="cat-big-icon">👶</div>
+          <div class="cat-big-label">Baby</div>
+          <div class="cat-big-sub">Newborn &amp; Toddler Essentials</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('wedding')">
+          <div class="cat-big-icon">💍</div>
+          <div class="cat-big-label">Wedding</div>
+          <div class="cat-big-sub">Decor, Gifts &amp; Ceremonies</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('pet')">
+          <div class="cat-big-icon">🐶</div>
+          <div class="cat-big-label">Pet</div>
+          <div class="cat-big-sub">Food, Toys &amp; Accessories</div>
+        </div>
+
+        <div class="cat-big-card" onclick="filterCatCards('gift')">
+          <div class="cat-big-icon">🎁</div>
+          <div class="cat-big-label">Gifts</div>
+          <div class="cat-big-sub">For Him, Her &amp; Everyone</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FILTERED BUNDLES (shown when a non-fashion cat is clicked) ── -->
+    <div class="main" id="cat-bundles-panel" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title" id="cat-title">Bundles</h2>
+        <a class="see-all" onclick="hideCatBundles()">← Back to categories</a>
+      </div>
+      <div class="bundles-grid" id="bundles-grid"></div>
     </div>
 
     <div class="main">
-      <div class="deal-band">
-        <div>
-          <strong>Today's big deal:</strong> Curated bundles with smarter savings and faster checkout.
-        </div>
-        <span>Explore top picks</span>
-      </div>
-      <div class="section-header">
-        <h2 class="section-title" id="cat-title">🔥 Trending Bundles</h2>
-        <a class="see-all">View all →</a>
-      </div>
-      <div class="bundles-grid" id="bundles-grid"></div>
-
       <div class="ai-section">
         <div class="ai-label">✦ AI Bundle Builder</div>
         <h2>What's your goal today?</h2>
@@ -523,6 +629,194 @@
           <div class="ai-example" onclick="setAIExample('Newborn baby essentials')">Newborn essentials</div>
           <div class="ai-example" onclick="setAIExample('Complete photography starter kit')">Photography kit</div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       FASHION MODULE — 3 dedicated pages
+       Namespaced: fsh-* classes, fashion-* IDs
+  ══════════════════════════════════════════ -->
+
+  <!-- ── FASHION LANDING PAGE ── -->
+  <div class="page" id="page-fashion-landing">
+    <div class="fsh-page">
+
+      <!-- Hero Banner -->
+      <div class="fsh-landing-hero">
+        <div class="fsh-landing-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1400&q=80')"></div>
+        <div class="fsh-landing-hero-overlay"></div>
+        <div class="fsh-landing-hero-content">
+          <div class="fsh-landing-eyebrow">Fashion Collections</div>
+          <h1>Dress with intention.<br>Shop with purpose.</h1>
+          <p>Professionally curated outfits for every chapter of your life — from the boardroom to the celebration.</p>
+        </div>
+      </div>
+
+      <!-- Intro copy -->
+      <div class="fsh-landing-intro">
+        <div class="fsh-landing-intro-kicker">Curated by personal stylists</div>
+        <h2>Three collections.<br>Every occasion covered.</h2>
+        <p>Each bundle is hand-picked so every piece works together perfectly — colour, fit, and style — like a personal stylist did the work for you.</p>
+      </div>
+
+      <!-- Category Cards Grid -->
+      <div class="fsh-categories-grid" id="fsh-categories-grid">
+        <!-- Rendered by fashion.js → renderFashionLanding() -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FASHION BUNDLE LIST PAGE ── -->
+  <div class="page" id="page-fashion-list">
+    <div class="fsh-list-page">
+
+      <!-- Dynamic hero — filled by fashion.js -->
+      <div class="fsh-list-hero" id="fsh-list-hero">
+        <div class="fsh-list-hero-bg" id="fsh-list-hero-bg"></div>
+        <div class="fsh-list-hero-overlay"></div>
+        <div class="fsh-list-hero-content">
+          <button class="fsh-list-back" onclick="Fashion.showLanding()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            All Fashion Collections
+          </button>
+          <div class="fsh-list-hero-badge" id="fsh-list-hero-badge">
+            <span>✦</span>
+            <span id="fsh-list-hero-badge-text">Fashion</span>
+          </div>
+          <h2 id="fsh-list-hero-title">Interview &amp; Formal Wear</h2>
+          <p id="fsh-list-hero-desc">Professionally curated outfits for interviews, office wear, business meetings, and corporate events.</p>
+        </div>
+      </div>
+
+      <!-- Bundles Section -->
+      <div class="fsh-bundles-section">
+        <div class="fsh-bundles-header">
+          <h3 id="fsh-list-count-heading">Curated Bundles</h3>
+          <span id="fsh-list-count-sub"></span>
+        </div>
+        <div class="fsh-bundles-grid" id="fsh-bundles-grid">
+          <!-- Rendered by fashion.js → renderBundleList() -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FASHION BUNDLE DETAIL PAGE ── -->
+  <div class="page" id="page-fashion-detail">
+    <div class="fsh-detail-page">
+
+      <!-- Hero — filled by fashion.js -->
+      <div class="fsh-detail-hero" id="fsh-detail-hero">
+        <div class="fsh-detail-hero-bg" id="fsh-detail-hero-bg"></div>
+        <div class="fsh-detail-hero-overlay"></div>
+        <div class="fsh-detail-hero-content">
+          <button class="fsh-detail-back" id="fsh-detail-back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            <span id="fsh-detail-back-label">Back</span>
+          </button>
+          <div class="fsh-detail-category-badge" id="fsh-detail-badge">
+            <span>✦</span>
+            <span id="fsh-detail-badge-text">Fashion</span>
+          </div>
+          <h1 id="fsh-detail-title">Bundle Name</h1>
+          <p id="fsh-detail-desc">Bundle description.</p>
+          <div class="fsh-detail-hero-actions">
+            <button class="fsh-btn-primary" onclick="Fashion.customizeBundle()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Customize Bundle
+            </button>
+            <button class="fsh-btn-outline" onclick="Fashion.saveBundle()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              Save Bundle
+            </button>
+          </div>
+        </div>
+        <!-- Tags — top right -->
+        <div class="fsh-detail-tags-row" id="fsh-detail-tags-row"></div>
+      </div>
+
+      <!-- Body: product list + price sidebar -->
+      <div class="fsh-detail-body">
+
+        <!-- Left: outfit flow + product cards -->
+        <div>
+          <!-- Outfit flow indicator -->
+          <div class="fsh-outfit-flow" id="fsh-outfit-flow">
+            <div class="fsh-outfit-flow-header">
+              <div class="fsh-outfit-flow-dot"></div>
+              <h4>Stylist's Outfit Flow</h4>
+              <span>— every piece chosen to match</span>
+            </div>
+            <div class="fsh-outfit-steps" id="fsh-outfit-steps"></div>
+          </div>
+
+          <!-- Stylist note -->
+          <div class="fsh-stylist-note">
+            <div class="fsh-stylist-note-icon">✦</div>
+            <p><strong>Curated for you:</strong> Every item in this bundle has been selected to complement each other in colour, style, and occasion. Uncheck any item to remove it and see your price update instantly.</p>
+          </div>
+
+          <!-- Section label -->
+          <div class="fsh-section-label">
+            <h3>What's Included</h3>
+            <span id="fsh-included-count"></span>
+          </div>
+
+          <!-- Product cards -->
+          <div class="fsh-products-list" id="fsh-products-list">
+            <!-- Rendered by fashion.js → renderBundleDetail() -->
+          </div>
+        </div>
+
+        <!-- Right: price calculator sidebar -->
+        <div>
+          <div class="fsh-price-sidebar">
+            <div class="fsh-price-sidebar-header">
+              <h4>Your Bundle Price</h4>
+              <p>Uncheck items to customise your bundle — pricing updates instantly.</p>
+            </div>
+            <div class="fsh-price-body">
+
+              <div class="fsh-price-row">
+                <span class="fsh-price-row-label">Subtotal</span>
+                <span class="fsh-price-row-value" id="fsh-price-subtotal">₹0</span>
+              </div>
+
+              <div class="fsh-price-discount-row">
+                <span class="fsh-price-row-label" style="font-size:0.85rem;color:var(--text-muted);">Bundle Discount</span>
+                <span class="fsh-price-discount-badge" id="fsh-price-discount-badge">18% off</span>
+              </div>
+
+              <div class="fsh-price-row">
+                <span class="fsh-price-row-label">You Save</span>
+                <span class="fsh-price-row-value fsh-price-savings" id="fsh-price-savings">₹0</span>
+              </div>
+
+              <div class="fsh-price-total-row">
+                <span class="fsh-price-total-label">Final Price</span>
+                <div class="fsh-price-total-value" id="fsh-price-total"><small>₹</small><span id="fsh-price-total-num">0</span></div>
+              </div>
+
+              <div class="fsh-price-items-note" id="fsh-price-items-note">6 of 6 items selected</div>
+
+              <div class="fsh-price-zero-warning" id="fsh-price-zero-warning">
+                Select at least one item to continue.
+              </div>
+
+              <button class="fsh-price-cta" onclick="showToast('🚀 Checkout coming soon!')">
+                Proceed to Checkout →
+              </button>
+              <button class="fsh-price-cta-secondary" onclick="Fashion.saveBundle()">
+                ♡ &nbsp;Save for Later
+              </button>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -640,10 +934,12 @@
     })();
   </script>
   <script src="js/data.js"></script>
+  <script src="js/fashion-data.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/fashion.js"></script>
   <script src="js/ai.js"></script>
   <script src="js/subscriptions.js"></script>
 
